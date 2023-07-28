@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { User } from "./User";
 import "./App.css";
 import { Home } from "./Home";
@@ -8,11 +8,21 @@ import { Contact } from "./Contact";
 function App() {
   return (
     <BrowserRouter>
+      <div>
+        <NavLink to="/">Home</NavLink>
+        <br />
+        <NavLink to="/user">User</NavLink>
+        <br />
+        <NavLink to="/about">About</NavLink>
+        <br />
+        <NavLink to="/contact">Contact</NavLink>
+        <br />
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/User" element={<User />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact />} />
+        <Route path="/user" element={<User name="Smit" />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );
