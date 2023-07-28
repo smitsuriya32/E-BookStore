@@ -1,9 +1,9 @@
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-import { User } from "./User";
 import "./App.css";
-import { Home } from "./Home";
-import { About } from "./About";
-import { Contact } from "./Contact";
+import { Home } from "./Components/Home";
+import { User } from "./Components/User";
+import { About } from "./Components/About";
+import { Contact } from "./Components/Contact";
 
 function App() {
   return (
