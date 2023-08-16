@@ -1,31 +1,61 @@
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-import "./App.css";
-import { Home } from "./Components/Home";
-import { User } from "./Components/User";
-import { About } from "./Components/About";
-import { Contact } from "./Components/Contact";
+import logo from './logo.svg';
+import './css/App.css';
+import EditUser from './Pages/EditUser';
+import globalStyles from './Components/Constants';
+import appStyle from './css/AppStyle.module.css';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Header from './Components/Header';
+import { AuthProvider, useAuthContext } from './contexts/auth';
+import LoginProvider from './contexts/Loginprovider';
+import { AuthContext } from './contexts/auth';
+import { useContext } from 'react';
+import Footer from './Components/Footer';
+import UpdateProfile from './Pages/UpdateProfile';
+import { loginContext } from './contexts/LoginContext';
+import loader from '../src/assets/Loader-Icon.gif';
+import '../src/css/loader.css';
+import { MainNavigation } from './MainNavigation';
+import { CartProvider } from './contexts/cartContext';
+// import { MainNavigation } from './Components/MainNavigation';
+
 
 function App() {
+  // const authContext = useAuthContext();
+  
   return (
-    <BrowserRouter>
-      <div>
-        <NavLink to="/">Home</NavLink>
-        <br />
-        <NavLink to="/user">User</NavLink>
-        <br />
-        <NavLink to="/about">About</NavLink>
-        <br />
-        <NavLink to="/contact">Contact</NavLink>
-        <br />
-      </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/user" element={<User name="Smit" />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    <>
+      
+      <ToastContainer />
+      <BrowserRouter>
+      <LoginProvider>
+        <AuthProvider>
+        <CartProvider>
+        <div>
+        <div className="loader-wrapper">
+                <img src={loader} alt="loader" />
+        </div>
+        </div>
+        <Header />
+        {/* {JSON.stringify(useAuthContext().user)} */}
+        <MainNavigation/>
+        <Footer/>
+        </CartProvider>
+        </AuthProvider>
+        </LoginProvider>
+      </BrowserRouter>
+     
+      
+      
+      
+      
+    </>);
+
+
+
+
+
 }
 
 export default App;
